@@ -22,31 +22,31 @@ public class Ruin {
 		double i = startAmount;
 
 		for (int j = 0; j < totalSimulations; j++) {
-			
+			int counter = 0;
 
 			while (i < winLimit && i > 0) {
 				double rand = Math.random();
 				int integernum = (int) Math.round(rand * 100);
-				int counter = 0;
+				
 
 				if(integernum <= winChance) {
 					i++;
-					counter++;
 				}
 				else {
 					i--;
-					counter++;
 				}
 				
-				if (i == 1) {
-					int done = j + 1;
-					System.out.println("Simulation " + done + ": " + counter + " LOSE");
-				}
-				
-				else if (i == winLimit - 1) {
-					int done = j + 1;
-					System.out.println("Simulation " + done + ": " + counter + " WIN");
-				}
+				counter++;
+			}
+			
+			if (i == 0) {
+				int done = j + 1;
+				System.out.println("Simulation " + done + ": " + counter + " LOSE");
+			}
+			
+			else if (i == winLimit) {
+				int done = j + 1;
+				System.out.println("Simulation " + done + ": " + counter + " WIN");
 			}
 			
 			i = startAmount;
